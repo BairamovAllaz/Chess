@@ -1,3 +1,6 @@
+///TODO FIX MODULE ERROR!!
+import {Pawn} from "./Pieces/Pawn";
+
 let board = [];
 
 for (let i = 0; i < 8; i++) {
@@ -20,7 +23,8 @@ function InitBoardPieces(board)
         {
             if(i < 2 || i > 5)
             {
-                board[i][j] = 1;
+                board[i][j] = new Pawn(i);
+                board[i][j].Print(board,j);
             }
         }
     }
