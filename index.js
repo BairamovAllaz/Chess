@@ -32,7 +32,23 @@ function InitBoardPieces(board)
                 board[i][j] = 1;
             }
         }
-        board[i].lineCodeHorizontal = "88";
+
+        let codeKeeperLeft = document.getElementById("CodeKepperLeft");
+        let codeKeeperRight = document.getElementById("CodeKepperRight");
+        let textKeeperLeft = document.createElement("div");
+        let textKeeperRight = document.createElement("div");
+        textKeeperLeft.style.width = (420 / numberCodes.length).toString();
+        textKeeperLeft.style.height = "53px";
+        textKeeperLeft.style.backgroundColor = "yellow";
+        textKeeperLeft.innerText = numberCodes[numberCodes.length - i - 1];
+
+        textKeeperRight.style.width = (420 / numberCodes.length).toString();
+        textKeeperRight.style.height = "53px";
+        textKeeperRight.style.backgroundColor = "yellow";
+        textKeeperRight.innerText = numberCodes[numberCodes.length - i - 1];
+        board[i].lineCodeHorizontal = numberCodes[numberCodes.length - i];
+        codeKeeperLeft.appendChild(textKeeperLeft);
+        codeKeeperRight.appendChild(textKeeperRight);
     }
 }
 
