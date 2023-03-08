@@ -1,3 +1,4 @@
+//TODO ALIGN DIV TO CENTER
 let board = [];
 const letterCodes = ["A","B","C","D","E","F","G","H"];
 const numberCodes = ["1","2","3","4","5","6","7","8"];
@@ -13,6 +14,7 @@ for (let i = 0; i < 8; i++) {
 
 InitBoardPieces(board);
 InitBoardToScreen(board);
+InitVerticalLineCodes();
 
 function InitBoardPieces(board)
 {
@@ -38,13 +40,15 @@ function InitBoardPieces(board)
         let textKeeperLeft = document.createElement("div");
         let textKeeperRight = document.createElement("div");
         textKeeperLeft.style.width = (420 / numberCodes.length).toString();
-        textKeeperLeft.style.height = "53px";
-        textKeeperLeft.style.backgroundColor = "yellow";
+        textKeeperLeft.style.height = "48px";
         textKeeperLeft.innerText = numberCodes[numberCodes.length - i - 1];
+        textKeeperLeft.style.textAlign = "center";
+        textKeeperLeft.style.marginTop = "6px";
 
         textKeeperRight.style.width = (420 / numberCodes.length).toString();
-        textKeeperRight.style.height = "53px";
-        textKeeperRight.style.backgroundColor = "yellow";
+        textKeeperRight.style.height = "48px";
+        textKeeperRight.style.textAlign = "center";
+        textKeeperRight.style.marginTop = "6px"
         textKeeperRight.innerText = numberCodes[numberCodes.length - i - 1];
         board[i].lineCodeHorizontal = numberCodes[numberCodes.length - i];
         codeKeeperLeft.appendChild(textKeeperLeft);
@@ -93,4 +97,31 @@ function InitBoardToScreen(board)
         boardDiv.append(row);
     }
 }
+
+function InitVerticalLineCodes()
+{
+    for (let i = 0;i < 2;++i)
+    {
+        for (let j = 0;j < board.length;++j)
+        {
+            if(i == 0)
+            {
+                let codeKeeper = document.getElementById("CodeKepperTop");
+                let textKeeperRight = document.createElement("div");
+                textKeeperRight.style.width = "65px";
+                textKeeperRight.style.height = "30px";
+                textKeeperRight.innerText = letterCodes[j];
+                codeKeeper.appendChild(textKeeperRight);
+            }else{
+                let codeKeeper = document.getElementById("CodeKepperBottom");
+                let textKeeperBottom = document.createElement("div");
+                textKeeperBottom.style.width = "65px";
+                textKeeperBottom.style.height = "30px";
+                textKeeperBottom.innerText = letterCodes[j];
+                codeKeeper.appendChild(textKeeperBottom);
+            }
+        }
+    }
+}
+
 console.log(board);
