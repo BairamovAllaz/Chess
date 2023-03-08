@@ -1,7 +1,7 @@
-///TODO FIX MODULE ERROR!!
-import {Pawn} from "./Pieces/Pawn";
-
 let board = [];
+const letterCodes = ["A","B","C","D","E","F","G","H"];
+const numberCodes = ["1","2","3","4","5","6","7","8"];
+
 
 for (let i = 0; i < 8; i++) {
     let row = [];
@@ -21,12 +21,18 @@ function InitBoardPieces(board)
     {
         for (let j = 0; j < 8; j++)
         {
+            if(i == 0 && i == 7)
+            {
+                let CodeElement = document.createElement("h1");
+                CodeElement.innerText = board["A"];
+                board[i][j].lineCodeVertical = "A";
+            }
             if(i < 2 || i > 5)
             {
-                board[i][j] = new Pawn(i);
-                board[i][j].Print(board,j);
+                board[i][j] = 1;
             }
         }
+        board[i].lineCodeHorizontal = "88";
     }
 }
 
@@ -34,7 +40,6 @@ function InitBoardToScreen(board)
 {
     let isWhite = true;
     let boardDiv = document.getElementById("main");
-    boardDiv.style.marginTop = "50px"
 
     for (let i = 0; i < 8; i++)
     {
